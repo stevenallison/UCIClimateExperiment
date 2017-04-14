@@ -19,7 +19,7 @@ my.gg <- function(df,x.vals,y.vals,colors,shapes=NULL,ltys=NULL) {
 
 # Mass loss analyses ######################################################################################################
 setwd("~/Documents/Projects/NSF Ecosystems 2014/Project/Data/Decomposition")
-write.csv(read.xlsx("WeightsElevationStudy_170330.xlsx",sheetName="Sheet1",header=T),"df0.csv",row.names=F,quote=F)
+write.csv(read.xlsx("WeightsElevationStudy.xlsx",sheetName="Sheet1",header=T),"df0.csv",row.names=F,quote=F)
 df1 <- read.csv("df0.csv")
 df1$Sample <- gsub("[[:digit:]]+[[:alpha:]]*$","",df1$SampleID)
 df1$Type <- gsub("^[[:digit:]]+","",df1$Sample)
@@ -127,7 +127,8 @@ Enz1.1 <- rbind(
   read.table("T1Hydrolase2.out.txt",header=TRUE,sep="\t",stringsAsFactors=FALSE),
   read.table("T1Hydrolase3.out.txt",header=TRUE,sep="\t",stringsAsFactors=FALSE),
   read.table("T1Oxidase1.out.txt",header=TRUE,sep="\t",stringsAsFactors=FALSE),
-  read.table("T1Oxidase2.out.txt",header=TRUE,sep="\t",stringsAsFactors=FALSE)
+  read.table("T1Oxidase2.out.txt",header=TRUE,sep="\t",stringsAsFactors=FALSE),
+  read.table("T1Oxidase3.out.txt",header=TRUE,sep="\t",stringsAsFactors=FALSE)
 )
 Enz1.1$Plate.Date <- Enz1.1$Date
 Enz1.1$Date <- "04-05-2016"
@@ -249,7 +250,7 @@ Enz2 <- rev.concen(Enz2,"ZG",2,"LAP")
 Enz2 <- rev.concen(Enz2,"ZG",4,"NAG")
 Enz2 <- rev.concen(Enz2,"ZP",1,"AG")
 
-Enz.plot <- Enz2[Enz2$Timepoint==2,]
+Enz.plot <- Enz2[Enz2$Timepoint==1,]
 
 pdf("M-M curves.pdf",height=10,width=80)
 d <- ggplot(Enz.plot[!is.na(Enz.plot$Activity),], aes(Concen, Activity, color=Temp)) + geom_point(size=0.5)
