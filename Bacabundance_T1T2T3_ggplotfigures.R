@@ -541,7 +541,7 @@ omegasT1T2T3
 omegasandetas <- rbind(omegasT1T2T3,etasquaredT1T2T3trans) 
 omegasandetas
 
-write.csv(omegasandetas, "results/omegasandetasT1T2T3.csv")
+write.csv(omegasandetas, "results/bacabund_omegasandetasT1T2T3.csv")
 
 
 
