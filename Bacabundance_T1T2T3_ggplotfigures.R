@@ -602,7 +602,7 @@ sp <- ggplot(data=bac_T1T2T3_nc_site_all, aes(x=Sitenames, y=mean, col=Sitenames
   geom_text(nudge_y=17e8) #this is for the Tukey labels, makes them black and nudges them up on y axis so they aren't directly on top of point
 #why are the labls showing up on my legend?
 
-pdf("Figures/microbialabundance/bacabundggplotOverallMeanBacAbundbySitebytimepoint_facetwrap.pdf", height=4, width=6)  
+pdf("Figures/microbialabundance/bacabundggplot/OverallMeanBacAbundbySitebytimepoint_facetwrap.pdf", height=4, width=6)  
 sp + facet_wrap(~Timepoint, ncol=3)
 dev.off()
 
@@ -613,7 +613,7 @@ write.csv(bac_T1T2T3_nc_site_all, "results/T1T2T3_Massloss_means_bysitebytime_no
 
 
 ####################################################################################
-#Now re-do but include controls for Jen
+#Now re-do but include in situ controls
 ####################################################################################
 #create table with just controls
 #C = "Sterile"
@@ -649,8 +649,8 @@ bac_means
 #make ggplot of the meanbacterial abundance by site over time
 sp <- ggplot(data=bac_means, aes(x=Sitenames, y=mean, col=Inoculum)) + geom_point(size=2) +
   labs(x=" ", y="Bacterial Abundance", col="Site", label="") + #change y axis label to "Temp C" and remove "Date" for x axis and change legend title
-  theme(strip.text.x = element_text(size = 14, colour = "black"), #make T1, T2, T3 labels bigger
-        axis.text.x=element_text(size=12,angle=70, hjust=1),  #change size angle and justification of x axis labels
+  theme(strip.text.x = element_text(size = 12, colour = "black"), #make T1, T2, T3 labels bigger
+        axis.text.x=element_text(size=10,angle=70, hjust=1),  #change size angle and justification of x axis labels
         axis.text.y=element_text(size=10),  #make y axis tick sizes bigger
         axis.title=element_text(size=14))+ #make y axis label larger
   geom_errorbar(aes(ymin=mean-se, ymax=mean+se), width=.1)+  #add in standard deviation error bars +
@@ -661,7 +661,7 @@ sp +facet_wrap(~Timepoint, ncol=3)
 
 
 #this adds on the tukey labels but I cannot figure out what is going on with the legend and how to remove the labels from it
-pdf("Figures/microbialabundance/bacabundggplotOverallMeanbacbySitebytimepoint_facetwrap_withinsitu.pdf", height=4, width=6)  
+pdf("Figures/microbialabundance/bacabundggplot/OverallMeanbacbySitebytimepoint_facetwrap_withinsitu.pdf", height=4, width=6)  
 
 sp +facet_wrap(~Timepoint, ncol=3) + geom_text(aes(x=Sitenames, y=mean,label=Tukeylabels), nudge_y=17e8,   data=bac_means)
 dev.off()
