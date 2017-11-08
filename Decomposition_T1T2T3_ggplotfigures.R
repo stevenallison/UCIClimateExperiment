@@ -115,7 +115,7 @@ Decomp_T1T2T3_nc <- Decomp_T1T2T3[-controls, ]
 ####################################################################################
 ####make figure with controls
 r <- ggplot(data=Decomp_T1T2T3, aes(x=sitenames, y=mean, col=Inoculum, group=Inoculum)) + geom_point(size=1) + geom_line()+ #group and geom_line add in the connector lines
-  labs(x=" ", y="% Mass loss", col="Inoculum") + #change y axis label to "Temp C" and remove "Date" for x axis and change legend title
+  labs(x=" ", y="Decomposition", col="Inoculum") + #change y axis label to "Temp C" and remove "Date" for x axis and change legend title
   theme(strip.text.x = element_text(size = 14, colour = "black"), #make T1, T2, T3 labels bigger
         axis.text.x=element_text(size=12,angle=70, hjust=1),  #change size angle and justification of x axis labels
         axis.text.y=element_text(size=12),  #make y axis tick sizes bigger
@@ -133,7 +133,7 @@ dev.off()
 
 ####make figure without controls
 p <- ggplot(data=Decomp_T1T2T3_nc, aes(x=sitenames, y=mean, col=Inoculum, group=Inoculum)) + geom_point(size=1) + geom_line()+ #group and geom_line add in the connector lines
-  labs(x=" ", y="% Mass loss", col="Inoculum") + #change y axis label to "Temp C" and remove "Date" for x axis and change legend title
+  labs(x=" ", y="Decomposition", col="Inoculum") + #change y axis label to "Temp C" and remove "Date" for x axis and change legend title
   theme(strip.text.x = element_text(size = 14, colour = "black"), #make T1, T2, T3 labels bigger
         axis.text.x=element_text(size=12,angle=70, hjust=1),  #change size angle and justification of x axis labels
         axis.text.y=element_text(size=12),  #make y axis tick sizes bigger
@@ -164,9 +164,9 @@ Decomp_T0
 #add T0 dataframe to T1,T2,T3 dataframe
 Decomp_T1T2T3_site_all <- rbind(Decomp_T0,Decomp_T1T2T3_nc)
 
-#make ggplot of the mean % mass loss by site over time
+#make ggplot of the mean Decomposition by site over time
 sp <- ggplot(data=Decomp_T1T2T3_site_all, aes(x=Timepoint, y=mean, col=Inoculum, group=Inoculum)) + geom_point(size=1) + geom_line()+ #group and geom_line add in the connector lines
-  labs(x=" ", y="% Mass loss", col="Inoculum") + #change y axis label to "Temp C" and remove "Date" for x axis and change legend title
+  labs(x=" ", y="Decomposition", col="Inoculum") + #change y axis label to "Temp C" and remove "Date" for x axis and change legend title
   theme(strip.text.x = element_text(size = 14, colour = "black"), #make T1, T2, T3 labels bigger
         axis.text.x=element_text(size=12,angle=70, hjust=1),  #change size angle and justification of x axis labels
         axis.text.y=element_text(size=12),  #make y axis tick sizes bigger
@@ -324,13 +324,13 @@ tuk.cld.T3 <- cld(tuk_T3)
 ### use sufficiently large upper margin 
 pdf("Figures/decompositionfigures/T1T2T3_tukey_site.pdf", height=7, width=8,pointsize=12)
 old.par <- par(mai=c(0.7,0.75,1.25,0.1),mfrow=c(1,3),no.readonly = TRUE) #make enough space at top for tukey symbols and smaller spaces between figures
-plot(tuk.cld.T1, ylab="% Mass loss", ylim=c(0,70), xaxt="n",xlab="" ) #add in same y limits for all, supress x axis labela nd tick marks
+plot(tuk.cld.T1, ylab="Decomposition", ylim=c(0,70), xaxt="n",xlab="" ) #add in same y limits for all, supress x axis labela nd tick marks
 mtext(side=3, "T1", line=4) #add in T1 label
 axis(side=1, at=c(1,2,3,4,5), labels=c("Desert","Scrubland","Grassland","Pine-Oak","Subalpine"), las=2) #add in customized x axis labels and make them perpendicular
-plot(tuk.cld.T2, ylab="% Mass loss", ylim=c(0,70),xaxt="n",xlab="") 
+plot(tuk.cld.T2, ylab="Decomposition", ylim=c(0,70),xaxt="n",xlab="") 
 mtext(side=3, "T2",line=4)#add in T2 label
 axis(side=1, at=c(1,2,3,4,5), labels=c("Desert","Scrubland","Grassland","Pine-Oak","Subalpine"), las=2)
-plot(tuk.cld.T3, ylab="% Mass loss", ylim=c(0,70),xaxt="n",xlab="") 
+plot(tuk.cld.T3, ylab="Decomposition", ylim=c(0,70),xaxt="n",xlab="") 
 axis(side=1, at=c(1,2,3,4,5), labels=c("Desert","Scrubland","Grassland","Pine-Oak","Subalpine"), las=2)
 mtext(side=3, "T3",line=4)#add in T3 label
 par(old.par)
@@ -362,13 +362,13 @@ tuk.cld.T3 <- cld(tuk_T3)
 ### use sufficiently large upper margin 
 pdf("Figures/decompositionfigures/T1T2T3_tukey_inoc.pdf", height=7, width=8, pointsize=12)
 old.par <- par(mai=c(0.7,0.75,1.25,0.1),mfrow=c(1,3),no.readonly = TRUE) #make enough space at top for tukey symbols and smaller spaces between figures
-plot(tuk.cld.T1, ylab="% Mass loss", ylim=c(0,70), xaxt="n",xlab="" ) #add in same y limits for all, supress x axis labela nd tick marks
+plot(tuk.cld.T1, ylab="Decomposition", ylim=c(0,70), xaxt="n",xlab="" ) #add in same y limits for all, supress x axis labela nd tick marks
 mtext(side=3, "T1", line=4) #add in T1 label
 axis(side=1, at=c(1,2,3,4,5), labels=c("Desert","Scrubland","Grassland","Pine-Oak","Subalpine"), las=2) #add in customized x axis labels and make them perpendicular
-plot(tuk.cld.T2, ylab="% Mass loss", ylim=c(0,70),xaxt="n",xlab="") 
+plot(tuk.cld.T2, ylab="Decomposition", ylim=c(0,70),xaxt="n",xlab="") 
 mtext(side=3, "T2",line=4)#add in T2 label
 axis(side=1, at=c(1,2,3,4,5), labels=c("Desert","Scrubland","Grassland","Pine-Oak","Subalpine"), las=2)
-plot(tuk.cld.T3, ylab="% Mass loss", ylim=c(0,70),xaxt="n",xlab="") 
+plot(tuk.cld.T3, ylab="Decomposition", ylim=c(0,70),xaxt="n",xlab="") 
 axis(side=1, at=c(1,2,3,4,5), labels=c("Desert","Scrubland","Grassland","Pine-Oak","Subalpine"), las=2)
 mtext(side=3, "T3",line=4)#add in T3 label
 par(old.par)
@@ -411,7 +411,7 @@ capture.output(summary.lm(model_all),file="results/T1T2T3_massloss_sitebyinocbyt
 #https://egret.psychol.cam.ac.uk/statistics/local_copies_of_sources_Cardinal_and_Aitken_ANOVA/glm_effectsize.htm
 #https://artax.karlin.mff.cuni.cz/r-help/library/lsr/html/etaSquared.html
 
-install.packages("lsr")
+#install.packages("lsr")
 library(lsr)
 etaSquared(modelmassloss_T3, type=2)
 #not sure ifyou cann apply type 3 to a type 2 anova
@@ -521,10 +521,13 @@ Decomp_T1T2T3_nc_site_all$Sitenames <- rep(c("Desert","Scrubland","Grassland","P
 Decomp_T1T2T3_nc_site_all$Tukeylabels <- c("a","b","d","c,d","c","a","b","c","b,c","b,c","a","b","e","d","c")
 Decomp_T1T2T3_nc_site_all$Sitenames <- factor(Decomp_T1T2T3_nc_site_all$Sitenames ,levels=c("Desert","Scrubland","Grassland","Pine-Oak","Subalpine"))
 
-#make ggplot of the mean % mass loss by site over time
+#make ggplot of the mean Decomposition by site over time
 sp <- ggplot(data=Decomp_T1T2T3_nc_site_all, aes(x=Sitenames, y=mean, col=Sitenames, label=Tukeylabels)) + geom_point(size=2) +
-  labs(x=" ", y="% Mass loss", col="Site") + #change y axis label to "Temp C" and remove "Date" for x axis and change legend title
-  theme(axis.text.x=element_text(size=10,angle=70, hjust=1))+ #change angles and size of x axis labels
+  labs(x=" ", y="Decomposition", col="Site") + #change y axis label to "Temp C" and remove "Date" for x axis and change legend title
+  theme(strip.text.x = element_text(size = 14, colour = "black"), #make T1, T2, T3 labels bigger
+        axis.text.x=element_text(size=12,angle=70, hjust=1),  #change size angle and justification of x axis labels
+        axis.text.y=element_text(size=10),  #make y axis tick sizes bigger
+        axis.title=element_text(size=14))+ #make y axis label larger
   geom_errorbar(aes(ymin=mean-se, ymax=mean+se), width=.1)+  #add in standard deviation error bars +
   scale_color_manual(values=c("red", "orange", "green","blue","purple"))+#add in manual colors for points/lines
   geom_text(nudge_y=3.5) #this is for the Tukey labels, makes them black and nudges them up on y axis so they aren't directly on top of point
@@ -574,10 +577,13 @@ names(Decomp_T1T2T3_nc_site_all)
 decomp_means <- rbind(Decomp_T1T2T3_nc_site_all,Decomp_T1T2T3_LandN_2 )
 
 decomp_means
-#make ggplot of the mean % mass loss by site over time
+#make ggplot of the mean Decomposition by site over time
 sp <- ggplot(data=decomp_means, aes(x=Sitenames, y=mean, col=Inoculum)) + geom_point(size=2) +
-  labs(x=" ", y="% Mass loss", col="Site", label="") + #change y axis label to "Temp C" and remove "Date" for x axis and change legend title
-  theme(axis.text.x=element_text(size=10,angle=70, hjust=1))+ #change angles and size of x axis labels
+  labs(x=" ", y="Decomposition", col="Site", label="") + #change y axis label to "Temp C" and remove "Date" for x axis and change legend title
+  theme(strip.text.x = element_text(size = 14, colour = "black"), #make T1, T2, T3 labels bigger
+        axis.text.x=element_text(size=12,angle=70, hjust=1),  #change size angle and justification of x axis labels
+        axis.text.y=element_text(size=10),  #make y axis tick sizes bigger
+        axis.title=element_text(size=14))+ #make y axis label larger
   geom_errorbar(aes(ymin=mean-se, ymax=mean+se), width=.1)+  #add in standard deviation error bars +
   scale_color_manual(labels=c("Desert","Scrubland","Grassland","Pine-Oak","Subalpine","In-situ"), values=c("red", "orange", "green","blue","purple","burlywood2"))#add in manual colors for points/lines
  
